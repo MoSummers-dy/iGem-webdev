@@ -50,7 +50,7 @@ button {
   font-size: 10pt;
 }
 
-h1, h2, h3, footer {
+h1, h2, h3, footer, header p {
   text-align: center;
 }
 

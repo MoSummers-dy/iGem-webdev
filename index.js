@@ -13,8 +13,7 @@
   window.addEventListener("load", init);
 
   /**
-   * When the window loads, get all breeds of dogs buttons and display them.
-   * Fetch the name of dogs from the Dog API.
+   * When the window loads, activate the button for fetching posts.
    */
   function init() {
     id("post-btn").addEventListener("click", fetchPost);
@@ -42,20 +41,27 @@
     id("response-message").textContent = "Posts";
     let sources = response;
     for (let i = 0; i < sources.length; i++) {
-      let post = gen("div");
-      let userId_id = gen("h5");
-      userId_id.textContent = "User id: " + sources[i].userId
-        + "     Id: " + sources[i].id;
+      if (
+        ((id("id-input") && parseInt(id("id-input").value) > 0 && sources[i].id == parseInt(id("id-input").value))
+        || (id("id-input").value.length == 0)) &&
+        ((id("userId-input") && parseInt(id("userId-input").value) > 0 && sources[i].userId == parseInt(id("userId-input").value))
+        || (id("userId-input").value.length == 0))) {
 
-      let title = gen("h4");
-      title.textContent = sources[i].title;
+          let post = gen("div");
+          let userId_id = gen("h5");
+          userId_id.textContent = "Id: " + sources[i].id
+            + "     User Id: " + sources[i].userId;
 
-      let postBody = gen("p");
-      postBody.textContent = sources[i].body;
-      post.appendChild(title);
-      post.appendChild(userId_id);
-      post.appendChild(postBody);
-      id("response").appendChild(post);
+          let title = gen("h4");
+          title.textContent = sources[i].title;
+
+          let postBody = gen("p");
+          postBody.textContent = sources[i].body;
+          post.appendChild(title);
+          post.appendChild(userId_id);
+          post.appendChild(postBody);
+          id("response").appendChild(post);
+      }
     }
 
     id("post-btn").disabled = false;
