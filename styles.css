@@ -2,7 +2,8 @@
   Name: Diana Dai
   Date: Mar 13, 2020
 
-  This is the styles.css page for my page.
+  This is the styles.css page for the iGEM web development team application.
+  Source: my CSE 154 Creative proejct 3 https://github.com/MoSummers-dy/CSE154-CP3
 */
 
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Catamaran&display=swap');
@@ -24,7 +25,7 @@ h1, h2, h3 {
   text-shadow: 2px 2px 2px white;
 }
 
-section, header {
+header {
   background-color: rgba(159, 223, 248, 0.61);
   box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
 }

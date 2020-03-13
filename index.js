@@ -1,14 +1,14 @@
 /**
  * Name: Diana Dai
  * Date: March 13, 2020
- * This is the index.js page for the webpage.
+ *
+ * This is the index.js page for the iGEM web development team application.
  */
 
 "use strict";
 (function() {
 
   const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
-  const NUM_IMG = 1; // default number of images per breed
 
   window.addEventListener("load", init);
 
@@ -20,7 +20,7 @@
   }
 
   function fetchPost() {
-    id("response-message").textContent = "Posts Loading ...";
+    id("response-message").textContent = "Loading ...";
     id("response").innerHTML = "";
     id("post-btn").disabled = true;
 
@@ -32,8 +32,8 @@
   }
 
   /**
-   * Appends the given dogs name data to the page for display.
-   * Information include the name message and a status indicating success or not.
+   * Appends the given posts data to the page for display.
+   * Information include the title, user id, id, and the post body.
    * @param {object} response - json object representing various dogs name information to
    *                   add to the page
    */
@@ -42,9 +42,13 @@
     let sources = response;
     for (let i = 0; i < sources.length; i++) {
       if (
-        ((id("id-input") && parseInt(id("id-input").value) > 0 && sources[i].id == parseInt(id("id-input").value))
+        // check if the post fulfill the filter's requirement (id & userId)
+        // display the post if true
+        ((id("id-input") && parseInt(id("id-input").value) > 0
+        && sources[i].id == parseInt(id("id-input").value))
         || (id("id-input").value.length == 0)) &&
-        ((id("userId-input") && parseInt(id("userId-input").value) > 0 && sources[i].userId == parseInt(id("userId-input").value))
+        ((id("userId-input") && parseInt(id("userId-input").value) > 0
+        && sources[i].userId == parseInt(id("userId-input").value))
         || (id("userId-input").value.length == 0))) {
 
           let post = gen("div");
@@ -57,6 +61,7 @@
 
           let postBody = gen("p");
           postBody.textContent = sources[i].body;
+
           post.appendChild(title);
           post.appendChild(userId_id);
           post.appendChild(postBody);
@@ -65,33 +70,6 @@
     }
 
     id("post-btn").disabled = false;
-  }
-
-  /**
-   * Appends selected number of the given dog breed images to the board for display.
-   * Each image would have a breif explanation.
-   * @param {object} response - json object representing various pokemon information to
-   *                   add to the player card.
-   */
-  function displayImage(response) {
-    let sources = response;
-    for (let i = 0; i < sources.length; i++) {
-      let userId = gen("p");
-      userId.textContent = sources[i].userId;
-
-      let id = gen("p");
-      id.textContent = sources[i].id;
-
-      let title = gen("h4");
-      title.textContent = sources[i].title;
-
-      let postBody = gen("p");
-      postBody.textContent = sources[i].body;
-      id("board").appendChild(userId);
-      id("board").appendChild(id);
-      id("board").appendChild(title);
-      id("board").appendChild(postBody);
-    }
   }
 
   /**
@@ -109,7 +87,7 @@
   }
 
   /* ------------------------------ Helper Functions  ------------------------------ */
-
+  // Source: CSE 154 Creative Project 3 https://github.com/MoSummers-dy/CSE154-CP3
   /**
    * Helper function to return the response's result text if successful, otherwise
    * returns the rejected Promise result with an error status and corresponding text
