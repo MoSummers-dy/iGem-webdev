@@ -1,0 +1,61 @@
+/*
+  Name: Diana Dai
+  Date: Mar 13, 2020
+
+  This is the styles.css page for my page.
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Catamaran&display=swap');
+
+body {
+  background-image: url("bgnew.jpg");
+  background-size: auto;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
+  margin: auto auto;
+  width: 80%;
+}
+
+h1, h2, h3 {
+  font-family: 'Audiowide', cursive;
+  border: 2px solid Navy;
+  background-color: rgba(15, 183, 255, 0.4);
+  text-shadow: 2px 2px 2px white;
+}
+
+section, header {
+  background-color: rgba(159, 223, 248, 0.61);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
+}
+
+body, p, footer, button {
+  font-family: 'Catamaran', sans-serif;
+  font-size: 14pt;
+  color: Navy;
+}
+
+#response {
+  min-height: 200px;
+  background-color: rgba(159, 223, 248, 0.61);
+  padding: 10px;
+}
+
+#response div {
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+
+button {
+  margin: 3px;
+  font-size: 10pt;
+}
+
+h1, h2, h3, footer {
+  text-align: center;
+}
+
+footer {
+  margin-top: 10px;
+  background-color: rgba(248, 159, 196, 0.31);
+  color: rgb(248, 21, 114);
+}
